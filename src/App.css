@@ -1,4 +1,4 @@
-.App {
+* {
   text-align: center;
   padding: 5rem 1rem;
 }
@@ -17,18 +17,18 @@
   margin-top: 1rem;
 }
 
-nav {
+.formDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
 }
-nav h3 {
+.formDiv h3 {
   margin: 1rem;
   cursor: pointer;
   color: #718096;
 }
-nav h3:hover {
+.formDiv h3:hover {
   color: white;
 }
 
@@ -77,7 +77,7 @@ input[type="checkbox"] {
 button {
   display: block;
   margin: 1rem 0;
-  padding: 0.35rem 0.5rem;
+  padding: 1.35rem 0.5rem;
   background-color: #4299e1;
   color: #1a202c;
   border: none;

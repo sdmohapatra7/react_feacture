@@ -7,11 +7,11 @@ const initialState = {
     error: ""
 }
 
-const signupUser = createAsyncThunk(
+export const signupUser = createAsyncThunk(
     "signupUser",
     async (data, { rejectWithValue }) => {
         console.log("data", data);
-        const response = await fetch("https://641dd63d945125fff3d75742.mockapi.io/crud", {
+        const response = await fetch("https://661828109a41b1b3dfbc63ef.mockapi.io/api/v1/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -31,9 +31,21 @@ const authSlice = createSlice({
     reducers: {
 
     },
-    // extraReducers:{
+    extraReducers:(builder)=>{
+        builder
+        .addCase(signupUser.pending,(state)=>{
+            state.loading = true;
+        })
+        .addCase(signupUser.fulfilled,(state,action)=>{
+            state.loading = false;
+            state.users.push(action.payload)
+        })
+        .addCase(signupUser.rejected,(state,action)=>{
+            state.loading = false;
+            state.users = action.payload
+        })
 
-    // }
+    }
 })
 
 export default authSlice.reducer
