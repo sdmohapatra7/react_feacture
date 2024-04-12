@@ -16,19 +16,24 @@
   align-items: center;
   margin-top: 1rem;
 }
-
+.formContainer{
+    max-width: 600px;
+    border:4px solid rgb(105, 104, 100);
+    margin-top: 5%;
+    margin-left: 10%;
+}
 .formDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
 }
-.formDiv h3 {
+h3 {
   margin: 1rem;
   cursor: pointer;
   color: #718096;
 }
-.formDiv h3:hover {
+h3:hover {
   color: white;
 }
 

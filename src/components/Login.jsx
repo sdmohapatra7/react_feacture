@@ -1,8 +1,8 @@
 import React from 'react';
 import { useFormik } from "formik";
-import { signupSchema } from '../schema/signupSchema'
+import { loginSchema } from '../schema/loginSchema'
 import { useDispatch } from 'react-redux';
-import { signupUser } from '../feacture/authSlice';
+import { loginUser } from '../feacture/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -18,15 +18,15 @@ export default function Signup() {
     const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
         useFormik({
             initialValues,
-            validationSchema: signupSchema,
+            validationSchema: loginSchema,
             validateOnChange: true,
             validateOnBlur: false,
 
             onSubmit: (values, action) => {
-                dispatch(signupUser(values)).then((result)=>{
+                dispatch(loginUser(values)).then((result)=>{
                     if(result.payload){
                         action.resetForm();
-                        navigate('/login');
+                        navigate('/');
                     }
                 })
                 
@@ -34,8 +34,8 @@ export default function Signup() {
         });
     return (
         <div className='formContainer'>
-            <h3>Signup Form</h3>
-            <div className='formDiv'>                
+            <h3>Login Form</h3>
+            <div className='formDiv'>               
                 <form onSubmit={handleSubmit}>
                     <label htmlFor='name'>Name : </label>
                     <input type='text'
@@ -70,18 +70,8 @@ export default function Signup() {
                     {touched.password && errors.password ? (
                         <p className="error">{errors.password}</p>
                     ) : null}
-                    <label htmlFor='conformPassword'>Conform Password : </label>
-                    <input type='password'
-                        name='conformPassword'
-                        id='conformPassword'
-                        placeholder='Enter Your Password..'
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.conformPassword} />
-                    {touched.conformPassword && errors.conformPassword ? (
-                        <p className="error">{errors.conformPassword}</p>
-                    ) : null}
-                    <button type="submit">Signup</button>
+                    
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </div>
