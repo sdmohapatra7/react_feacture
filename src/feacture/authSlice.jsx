@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const signupUser = createAsyncThunk(
-    "signupUser",
+    "user/signupUser",
     async (data, { rejectWithValue }) => {
         console.log("data", data);
         const response = await fetch("https://661828109a41b1b3dfbc63ef.mockapi.io/api/v1/users", {
@@ -38,11 +38,11 @@ const authSlice = createSlice({
         })
         .addCase(signupUser.fulfilled,(state,action)=>{
             state.loading = false;
-            state.users.push(action.payload)
+            state.user = action.payload
         })
         .addCase(signupUser.rejected,(state,action)=>{
             state.loading = false;
-            state.users = action.payload
+            state.user = action.payload
         })
 
     }

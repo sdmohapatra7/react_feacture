@@ -8,7 +8,6 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-
           <Route exact path="/" element={<Signup />} />
         </Routes>
       </BrowserRouter>
