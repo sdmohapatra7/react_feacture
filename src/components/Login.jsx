@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../feacture/authSlice';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Signup() {
     const initialValues = {
         name: "",
