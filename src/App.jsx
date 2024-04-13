@@ -5,6 +5,7 @@ import Login from './components/Login';
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from './components/Home';
+import Profile from './components/Profile';
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <BrowserRouter>
       <Home />
         <Routes>
-          
+        <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
         </Routes>

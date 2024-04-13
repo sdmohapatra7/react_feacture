@@ -1,10 +1,10 @@
 import React from 'react';
 import { useFormik } from "formik";
 import { signupSchema } from '../schema/signupSchema'
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { signupUser } from '../feacture/authSlice';
 import { useNavigate } from 'react-router-dom';
-
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Signup() {
     const initialValues = {
@@ -32,6 +32,7 @@ export default function Signup() {
                 
             },
         });
+        const {loading,error} = useSelector((state)=>state.user)
     return (
         <div className='formContainer'>
             <h3>Signup Form</h3>
@@ -81,7 +82,16 @@ export default function Signup() {
                     {touched.conformPassword && errors.conformPassword ? (
                         <p className="error">{errors.conformPassword}</p>
                     ) : null}
-                    <button type="submit">Signup</button>
+                    <button type="submit">
+                        {loading ?<><Spinner
+                        as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"/>Loading...</>
+                        :'Signin'}
+                    </button>
+                    {error && (<div>{error}</div>)}
                 </form>
             </div>
         </div>
